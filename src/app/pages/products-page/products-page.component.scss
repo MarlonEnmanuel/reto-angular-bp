@@ -1,0 +1,14 @@
+.products-page {
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+
+        input {
+            padding: 0.8rem 1rem;
+            font-weight: bold;
+        }
+    }
+
+}

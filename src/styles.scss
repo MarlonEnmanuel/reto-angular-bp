@@ -1,1 +1,156 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #FFEC01;
+    --color-secondary: #1B2D55;
+    --color-danger: #cc3333e0;
+    --color-sucess: #4abb4a;
+    --color-warning: #ffee00;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2rem;
+
+    @media (max-width: 750px) {
+        grid-template-columns: 1fr;
+    }
+
+    >div {
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        input {
+            display: block;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        span {
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        &.error {
+            span {
+                color: red;
+            }
+
+            input {
+                border-color: red;
+            }
+        }
+    }
+}
+
+.form-buttons {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    input[type="submit"] {
+        margin-left: auto;
+        padding: 0.6rem 2rem;
+    }
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+
+    &.primary {
+        background-color: var(--color-primary);
+        font-weight: bold;
+    }
+    &.secondary {
+        background-color: var(--color-secondary);
+        color: white;
+    }
+    &.success {
+        background-color: var(--color-sucess);
+        color: white;
+    }
+    &.danger {
+        background-color: var(--color-danger);
+        color: white;
+    }
+    &.warning {
+        background-color: var(--color-warning);
+    }
+}
+
+.dropdown {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+
+    span {
+        font-weight: bolder;
+        font-size: 1.5rem;
+        display: block;
+        text-align: center;
+    }
+
+    &:hover ul {
+        display: block;
+    }
+
+    ul {
+        text-align: left;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        background-color: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        display: none;
+        z-index: 1;
+        top: 0;
+        right: 0;
+
+        li {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            &:hover {
+                background-color: #f1f1f1;
+            }
+            
+            a {
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+}

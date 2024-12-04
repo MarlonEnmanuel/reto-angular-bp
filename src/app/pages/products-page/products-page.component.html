@@ -1,0 +1,33 @@
+<div class="products-page">
+
+    <div class="products-page-header">
+        <div>
+            <input
+                type="text"
+                name="search"
+                placeholder="Buscar"
+                [formControl]="searchInput"
+                (keyup)="search.set(searchInput.value)"
+                />
+        </div>
+        <div>
+            <a [routerLink]="['create']">
+                <button class="primary">Agregar</button>
+            </a>
+        </div>
+    </div>
+
+    <app-product-list
+        [products]="filteredProducts"
+        (onDelete)="productToDelete.set($event)"
+        />
+
+    @if (productToDelete()) {
+        <app-confirmation-modal
+            [message]="getDeleteMessage()"
+            (onCancel)="productToDelete.set(null)"
+            (onConfirm)="deleteProduct()"
+            />
+    }
+
+</div>
