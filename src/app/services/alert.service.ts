@@ -6,26 +6,18 @@ import { Injectable, signal } from '@angular/core';
 export class AlertService {
 
     public alerts = signal<Alert[]>([]);
-    private timeout = 10000;
 
     constructor() { }
 
     public error(message:string) {
-        this.alert('error', message);
+        const newAlert:Alert = { type: 'error', message };
+        this.alerts.update(alerts => [...alerts, newAlert]);
     }
 
     public success(message:string) {
-        this.alert('success', message);
-    }
-
-    public warning(message:string) {
-        this.alert('warning', message);
-    }
-
-    public alert(type:AlertType, message:string) {
-        const alert:Alert = { type, message };
-        this.alerts.update(alerts => [...alerts, alert]);
-        setTimeout(() => this.removeAlert(alert), this.timeout);
+        const newAlert:Alert = { type: 'success', message };
+        this.alerts.update(alerts => [...alerts, newAlert]);
+        setTimeout(() => this.removeAlert(newAlert), 5000);
     }
 
     public removeAlert(alert:Alert) {
@@ -33,7 +25,7 @@ export class AlertService {
     }
 }
 
-export type AlertType = 'success'|'error'|'warning';
+export type AlertType = 'success'|'error';
 
 export interface Alert {
     type : AlertType;

@@ -40,16 +40,7 @@ describe('AlertService', () => {
         expect(alerts[0].type).toBe('success');
         expect(alerts[0].message).toBe('test message');
     });
-
-    it('should add an warning alert', () => {
-        service.warning('test message');
-
-        var alerts = service.alerts()
-        expect(alerts.length).toBe(1);
-        expect(alerts[0].type).toBe('warning');
-        expect(alerts[0].message).toBe('test message');
-    });
-
+    
     it('should remove an alert', () => {
         service.alert('success', 'test message');
         service.removeAlert(service.alerts()[0]);

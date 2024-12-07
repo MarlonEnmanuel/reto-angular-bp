@@ -10,6 +10,15 @@
         background-color: var(--color-primary);
         box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
         color: var(--color-secondary);
+        padding: 1.2rem;
+        vertical-align: middle;
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+        }
     }
 
     main {

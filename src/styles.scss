@@ -22,6 +22,11 @@ body {
     padding: 0 1rem;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

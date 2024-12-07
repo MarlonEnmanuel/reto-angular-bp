@@ -6,8 +6,8 @@
                 type="text"
                 name="search"
                 placeholder="Buscar"
-                [formControl]="searchInput"
-                (keyup)="search.set(searchInput.value)"
+                (keyup)="updateSearch($event)"
+                [disabled]="loading()"
                 />
         </div>
         <div>
@@ -17,10 +17,15 @@
         </div>
     </div>
 
-    <app-product-list
-        [products]="filteredProducts"
-        (onDelete)="productToDelete.set($event)"
-        />
+    @if (loading()) {
+        <app-table-skeleton [rows]="7" helperText="Cargando ..."/>
+    }
+    @else {
+        <app-product-list
+            [products]="filteredProducts"
+            (onDelete)="productToDelete.set($event)"
+            />
+    }
 
     @if (productToDelete()) {
         <app-confirmation-modal

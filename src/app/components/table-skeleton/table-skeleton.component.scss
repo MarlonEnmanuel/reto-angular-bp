@@ -1,0 +1,22 @@
+table.skeleton {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    tr td {
+        color: #999;
+        text-align: center;
+        height: 58px;
+        border-bottom: 1px solid white;
+        animation: skeleton-pulse 1s infinite ease-in;
+    }
+}
+
+@keyframes skeleton-pulse {
+    0% {
+        background-color: #eee;
+    }
+    50% {
+        background-color: #ddd;
+    }
+    100% {
+        background-color: #eee;
+    }
+}
