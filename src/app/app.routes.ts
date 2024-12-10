@@ -1,9 +1,5 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './components/layout/layout.component';
-import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { ProductsPageComponent } from './pages/products-page/products-page.component';
-import { ProductCreatePageComponent } from './pages/product-create-page/product-create-page.component';
-import { ProductEditPageComponent } from './pages/product-edit-page/product-edit-page.component';
 
 export const routes: Routes = [
     {
@@ -17,20 +13,20 @@ export const routes: Routes = [
             },
             {
                 path: 'products',
-                component: ProductsPageComponent
+                loadComponent: () => import('./pages/products-page/products-page.component'),
             },
             {
                 path: 'products/create',
-                component: ProductCreatePageComponent
+                loadComponent: () => import('./pages/product-create-page/product-create-page.component'),
             },
             {
                 path: 'products/edit/:productId',
-                component: ProductEditPageComponent
+                loadComponent: () => import('./pages/product-edit-page/product-edit-page.component'),
             }
         ]
     },
     {
         path: '**',
-        component: NotFoundPageComponent,
+        loadComponent: () => import('./pages/not-found-page/not-found-page.component'),
     }
 ];

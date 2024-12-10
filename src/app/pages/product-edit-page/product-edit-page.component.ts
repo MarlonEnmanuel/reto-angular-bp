@@ -12,7 +12,7 @@ import { AlertService } from '../../services/alert.service';
     templateUrl: './product-edit-page.component.html',
     styleUrl: './product-edit-page.component.scss'
 })
-export class ProductEditPageComponent {
+export default class ProductEditPageComponent {
 
     @Input({required:true})
     public productId!:string;

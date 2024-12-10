@@ -21,7 +21,7 @@ import { TableSkeletonComponent } from "../../components/table-skeleton/table-sk
     templateUrl: './products-page.component.html',
     styleUrl: './products-page.component.scss'
 })
-export class ProductsPageComponent {
+export default class ProductsPageComponent {
 
     private products = signal<Product[]>([]);
 

@@ -12,7 +12,7 @@ import { AlertService } from '../../services/alert.service';
     templateUrl: './product-create-page.component.html',
     styleUrl: './product-create-page.component.scss'
 })
-export class ProductCreatePageComponent {
+export default class ProductCreatePageComponent {
 
     constructor(
         private productsApiService: ProductsApiService,
