@@ -1,0 +1,7 @@
+<div class="product-edit">
+    <h2>Formulario de Actualización</h2>
+    <hr>
+    @if (status() === 'success') {
+        <app-product-form [product]="product()" (sendProduct)="handleSendProduct($event)" />
+    }
+</div>

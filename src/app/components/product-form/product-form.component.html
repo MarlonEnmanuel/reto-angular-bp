@@ -1,0 +1,45 @@
+<div class="product-form">
+    <form [formGroup]="form" novalidate (submit)="handleSubmit()">
+        <div class="form-grid">
+            <div [class.error]="isInvalid(id)">
+                <label for="id">ID</label>
+                <input type="text" id="id" formControlName="id">
+                <span>{{ getErrors(id) }}</span>
+            </div>
+            <div [class.error]="isInvalid(name)">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" formControlName="name">
+                <span>{{ getErrors(name) }}</span>
+            </div>
+            <div [class.error]="isInvalid(description)">
+                <label for="description">Descripción</label>
+                <input type="text" id="description" formControlName="description">
+                <span>{{ getErrors(description) }}</span>
+            </div>
+            <div [class.error]="isInvalid(logo)">
+                <label for="logo">Logo</label>
+                <input type="text" id="logo" formControlName="logo">
+                <span>{{ getErrors(logo) }}</span>
+            </div>
+            <div [class.error]="isInvalid(dateRelease)">
+                <label for="dateRelease">Fecha de liberación</label>
+                <input type="date" id="dateRelease" formControlName="dateRelease" [min]="getMinReleaseDate()">
+                <span>{{ getErrors(dateRelease) }}</span>
+            </div>
+            <div [class.error]="isInvalid(dateRevision)">
+                <label for="dateRevision">Fecha de revisión</label>
+                <input type="date" id="dateRevision" formControlName="dateRevision">
+                <span>{{ getErrors(dateRevision) }}</span>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <div>
+                <input type="button" value="Regresar" (click)="location.back()">
+                <input class="danger" type="button" value="Reiniciar" (click)="form.reset()">
+            </div>
+            <div>
+                <input class="primary" type="submit" value="Enviar" [class.disabled]="form.invalid">
+            </div>
+        </div>
+    </form>
+</div>

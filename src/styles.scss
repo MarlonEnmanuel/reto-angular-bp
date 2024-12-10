@@ -27,58 +27,9 @@ table {
     border-collapse: collapse;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem 2rem;
-
-    @media (max-width: 750px) {
-        grid-template-columns: 1fr;
-    }
-
-    >div {
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        input {
-            display: block;
-            width: 100%;
-            margin-bottom: 0.5rem;
-        }
-        span {
-            display: block;
-            font-size: 0.9rem;
-        }
-
-        &.error {
-            span {
-                color: red;
-            }
-
-            input {
-                border-color: red;
-            }
-        }
-    }
-}
-
-.form-buttons {
-    padding-top: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    gap: 1rem;
-    margin-top: 1rem;
-
-    input[type="submit"] {
-        margin-left: auto;
-        padding: 0.6rem 2rem;
-    }
-}
-
 input {
-    padding: 0.5rem;
+    font-size: 1rem;
+    padding: 0.8rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -89,11 +40,14 @@ button,
 input[type="submit"],
 input[type="button"],
 input[type="reset"] {
-    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    padding: 1rem;
     border-radius: 4px;
     cursor: pointer;
     border: none;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+    display: inline-block;
+    width: 100%;
 
     &.primary {
         background-color: var(--color-primary);
