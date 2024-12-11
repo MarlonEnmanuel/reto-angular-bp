@@ -26,13 +26,17 @@
                     <td>{{ product.date_release }}</td>
                     <td>{{ product.date_revision }}</td>
                     <td>
-                        <div class="dropdown">
+                        <!-- <div class="dropdown">
                             <span>⁝</span>
                             <ul>
                                 <li (click)="router.navigate(['/products', 'edit', product.id])">Editar</li>
                                 <li (click)="onDelete.emit(product)">Eliminar</li>
                             </ul>
-                        </div>
+                        </div> -->
+                        <app-dropdown
+                            [buttonText]="'⁝'"
+                            [options]="getProductOptions(product)"
+                         />
                     </td>
                 </tr>
                 }

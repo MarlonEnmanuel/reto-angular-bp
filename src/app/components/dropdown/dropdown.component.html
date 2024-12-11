@@ -1,0 +1,17 @@
+<div
+    class="dropdown"
+    tabindex="0"
+    (click)="handleClic()"
+    (blur)="handleBlur()"
+    >
+    <span>{{ buttonText }}</span>
+    @if (open()) {
+        <ul class="dropdown-options">
+            @for (opt of options; track $index) {
+                <li (click)="opt.action()">
+                    {{ opt.label }}
+                </li>
+            }
+        </ul>
+    }
+</div>

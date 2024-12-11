@@ -1,11 +1,12 @@
 import { Component, computed, Input, output, Signal, signal } from '@angular/core';
 import { Product } from '../../services/products-api.models';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { DropdownComponent } from "../dropdown/dropdown.component";
 
 @Component({
     selector: 'app-product-list',
     standalone: true,
-    imports: [RouterLink],
+    imports: [DropdownComponent],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.scss'
 })
@@ -49,5 +50,18 @@ export class ProductListComponent {
         this.currentPage.update((prev) => {
             return prev >= this.totalPages() ? this.totalPages() : prev + 1;
         });
+    }
+
+    public getProductOptions(product:Product){
+        return [
+            {
+                label: 'Editar',
+                action: () => this.router.navigate(['/products', 'edit', product.id])
+            },
+            {
+                label: 'Eliminar',
+                action: () => this.onDelete.emit(product)
+            }
+        ];
     }
 }
