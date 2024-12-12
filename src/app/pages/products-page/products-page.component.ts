@@ -1,11 +1,11 @@
 import { Component, computed, signal } from '@angular/core';
-import { ProductsApiService } from '../../services/products-api.service';
-import { Product } from '../../services/products-api.models';
+import { ProductsApiService } from '../../services/products-api/products-api.service';
+import { Product } from '../../services/products-api/products-api.models';
 import { ProductListComponent } from "../../components/product-list/product-list.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ConfirmationModalComponent } from "../../components/confirmation-modal/confirmation-modal.component";
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from '../../services/alert/alert.service';
 import { TableSkeletonComponent } from "../../components/table-skeleton/table-skeleton.component";
 
 @Component({
@@ -44,8 +44,8 @@ export default class ProductsPageComponent {
     public productToDelete = signal<Product | null>(null);
     
     constructor(
-        private productsApiService: ProductsApiService,
-        private alertService: AlertService
+        private readonly productsApiService: ProductsApiService,
+        private readonly alertService: AlertService
     ) {}
 
     ngOnInit() {

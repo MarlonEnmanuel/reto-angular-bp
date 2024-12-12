@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 
 @Component({
     selector: 'app-dropdown',

@@ -1,31 +1,35 @@
+import { Injectable } from '@angular/core';
 
-export class DateUtils {
+@Injectable({
+    providedIn: 'root'
+})
+export class DateService {
 
-    public static parseDateOrNull(date:string) {
+    public parseDateOrNull(date:string) {
         if (!this.isValidDate(date)) return null;
         const dateStr = date.includes('T') ? date : date + 'T00:00:00';
         return new Date(dateStr);
     }
 
-    public static isValidDate(date:string) {
+    public isValidDate(date:string) {
         return !!date && !isNaN(Date.parse(date));
     }
 
-    public static addYears(date:Date, years:number) {
+    public addYears(date:Date, years:number) {
         const newDate = new Date(date);
         newDate.setFullYear(newDate.getFullYear() + years);
         return newDate;
     }
 
-    public static getDateString(date:Date){
+    public getDateString(date:Date){
         return date.toISOString().split('T')[0];
     }
 
-    public static isTodayOrFuture(date:Date) {
+    public isTodayOrFuture(date:Date) {
         return date.getTime() >= this.getToday().getTime();
     }
 
-    public static getToday() {
+    public getToday() {
         const date = new Date();
         date.setHours(0, 0, 0, 0);
         return date;

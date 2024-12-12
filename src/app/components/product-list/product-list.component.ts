@@ -1,5 +1,5 @@
 import { Component, computed, Input, output, Signal, signal } from '@angular/core';
-import { Product } from '../../services/products-api.models';
+import { Product } from '../../services/products-api/products-api.models';
 import { Router } from '@angular/router';
 import { DropdownComponent } from "../dropdown/dropdown.component";
 import { PaginationComponent } from "../pagination/pagination.component";

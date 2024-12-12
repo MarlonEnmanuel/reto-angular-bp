@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProductsPageComponent } from './products-page.component';
+import ProductsPageComponent from './products-page.component';
 import { ProductListComponent } from '../../components/product-list/product-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideRouter } from '@angular/router';
 import { ConfirmationModalComponent } from '../../components/confirmation-modal/confirmation-modal.component';
-import { ProductsApiMocker } from '../../services/products-api.mocks';
-import { ProductsApiService } from '../../services/products-api.service';
+import { ProductsApiMocker } from '../../services/products-api/products-api.mocks';
+import { ProductsApiService } from '../../services/products-api/products-api.service';
 
 describe('ProductsPageComponent', () => {
     let component: ProductsPageComponent;

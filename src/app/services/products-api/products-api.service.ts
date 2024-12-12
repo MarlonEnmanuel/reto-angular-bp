@@ -7,10 +7,10 @@ import { ApiResponse, Product } from './products-api.models';
 })
 export class ProductsApiService {
 
-    private baseUrl = '/api/bp/products';
+    private readonly baseUrl = '/api/bp/products';
 
     constructor(
-        private http:HttpClient,
+        private readonly http:HttpClient,
     ) { }
 
     public getProducts() {

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductListComponent } from './product-list.component';
 import { signal } from '@angular/core';
-import { Product } from '../../services/products-api.models';
+import { Product } from '../../services/products-api/products-api.models';
 
 describe('ProductListComponent', () => {
     let component: ProductListComponent;

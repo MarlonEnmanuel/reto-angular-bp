@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
-import { DateUtils } from '../utils/date.utils';
-import { ProductsApiService } from './products-api.service';
+import { ProductsApiService } from '../products-api/products-api.service';
 import { catchError, map, Observable, of } from 'rxjs';
+import { DateService } from '../date/date.service';
 
 @Injectable({
     providedIn: 'root'
@@ -10,10 +10,11 @@ import { catchError, map, Observable, of } from 'rxjs';
 export class FormService {
 
     constructor(
-        private productsApiService: ProductsApiService
+        private readonly productsApiService: ProductsApiService,
+        private readonly dateService: DateService,
     ) { }
 
-    public AlphaNumericValidator(): ValidatorFn {
+    public alphaNumericValidator(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
             if (!control.value) return null;
             if (/^[a-zA-Z0-9]*$/.test(control.value)) return null;
@@ -24,7 +25,7 @@ export class FormService {
     public validDateValidator(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
             if (!control.value) return null;
-            if (DateUtils.isValidDate(control.value)) return null;
+            if (this.dateService.isValidDate(control.value)) return null;
             return { validDate: true };
         };
     };
@@ -32,9 +33,9 @@ export class FormService {
     public todayOrFutureValidator(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
             if (!control.value) return null;
-            const date = DateUtils.parseDateOrNull(control.value);
+            const date = this.dateService.parseDateOrNull(control.value);
             if (!date) return null;
-            if (DateUtils.isTodayOrFuture(date)) return null;
+            if (this.dateService.isTodayOrFuture(date)) return null;
             return { todayOrFuture: true };
         };
     };

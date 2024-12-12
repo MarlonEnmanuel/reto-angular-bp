@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ProductsApiService } from '../../services/products-api.service';
+import { ProductsApiService } from '../../services/products-api/products-api.service';
 import { Router } from '@angular/router';
 import { ProductFormComponent } from "../../components/product-form/product-form.component";
-import { Product } from '../../services/products-api.models';
-import { AlertService } from '../../services/alert.service';
+import { Product } from '../../services/products-api/products-api.models';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
     selector: 'app-product-create',
@@ -15,9 +15,9 @@ import { AlertService } from '../../services/alert.service';
 export default class ProductCreatePageComponent {
 
     constructor(
-        private productsApiService: ProductsApiService,
-        private router: Router,
-        private alertService: AlertService,
+        private readonly productsApiService: ProductsApiService,
+        private readonly router: Router,
+        private readonly alertService: AlertService,
     ) { }
 
     public handleSendProduct(product: Product) {

@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductFormComponent } from './product-form.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { FormService } from '../../services/form.service';
-import { ProductsApiService } from '../../services/products-api.service';
-import { ProductsApiMocker } from '../../services/products-api.mocks';
+import { FormService } from '../../services/form/form.service';
+import { ProductsApiService } from '../../services/products-api/products-api.service';
+import { ProductsApiMocker } from '../../services/products-api/products-api.mocks';
 
 describe('ProductFormComponent', () => {
     let component: ProductFormComponent;
@@ -26,7 +26,7 @@ describe('ProductFormComponent', () => {
         })
         .compileComponents();
 
-        location = TestBed.inject(Location);
+        location = TestBed.inject(Location); // TODO: remove
         fixture = TestBed.createComponent(ProductFormComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();

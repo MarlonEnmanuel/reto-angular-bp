@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProductEditPageComponent } from './product-edit-page.component';
-import { ProductsApiMocker } from '../../services/products-api.mocks';
-import { ProductsApiService } from '../../services/products-api.service';
+import ProductEditPageComponent from './product-edit-page.component';
+import { ProductsApiMocker } from '../../services/products-api/products-api.mocks';
+import { ProductsApiService } from '../../services/products-api/products-api.service';
 import { Router } from '@angular/router';
 
 describe('ProductEditPageComponent', () => {

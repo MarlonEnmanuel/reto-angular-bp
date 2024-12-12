@@ -1,9 +1,9 @@
 import { Component, Input, signal } from '@angular/core';
 import { ProductFormComponent } from "../../components/product-form/product-form.component";
-import { ProductsApiService } from '../../services/products-api.service';
-import { ApiStatus, Product } from '../../services/products-api.models';
+import { ProductsApiService } from '../../services/products-api/products-api.service';
+import { ApiStatus, Product } from '../../services/products-api/products-api.models';
 import { Router } from '@angular/router';
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
     selector: 'app-product-edit-page',
@@ -22,9 +22,9 @@ export default class ProductEditPageComponent {
     public status = signal<ApiStatus>('initial');
 
     constructor(
-        private productsApiService: ProductsApiService,
-        public router: Router,
-        private alertService: AlertService,
+        private readonly productsApiService: ProductsApiService,
+        public readonly router: Router,
+        private readonly alertService: AlertService,
     ) { }
 
     ngOnInit() {

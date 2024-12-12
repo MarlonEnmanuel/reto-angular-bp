@@ -1,10 +1,10 @@
 import { Component, Input, output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DateUtils } from '../../utils/date.utils';
-import { FormService } from '../../services/form.service';
-import { Product } from '../../services/products-api.models';
+import { FormService } from '../../services/form/form.service';
+import { Product } from '../../services/products-api/products-api.models';
 import { Location } from '@angular/common';
-import { AlertService } from '../../services/alert.service';
+import { AlertService } from '../../services/alert/alert.service';
+import { DateService } from '../../services/date/date.service';
 
 @Component({
     selector: 'app-product-form',
@@ -22,17 +22,18 @@ export class ProductFormComponent {
     public form!: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder,
-        private formService: FormService,
-        public location: Location,
-        private alertService: AlertService
+        private readonly formBuilder: FormBuilder,
+        private readonly formService: FormService,
+        public readonly location: Location,
+        private readonly alertService: AlertService,
+        private readonly dateService: DateService,
     ) {}
 
     ngOnInit() {
         this.form = this.formBuilder.nonNullable.group({
             id: [
                 { value: this.product?.id ?? '', disabled: !!this.product },
-                [Validators.required, Validators.minLength(3), Validators.maxLength(10), this.formService.AlphaNumericValidator()],
+                [Validators.required, Validators.minLength(3), Validators.maxLength(10), this.formService.alphaNumericValidator()],
                 [this.formService.availableProductValidator()],
             ],
             name: [
@@ -80,8 +81,8 @@ export class ProductFormComponent {
     }
 
     public getMinReleaseDate(){
-        const today = DateUtils.getToday();
-        return DateUtils.getDateString(today);
+        const today = this.dateService.getToday();
+        return this.dateService.getDateString(today);
     }
 
     public handleSubmit() {
@@ -113,10 +114,10 @@ export class ProductFormComponent {
 
     private suscribeDateReleaseChanges() {
         this.dateRelease.valueChanges.subscribe(value => {
-            const date = DateUtils.parseDateOrNull(value);
+            const date = this.dateService.parseDateOrNull(value);
             if (date) {
-                const newDate = DateUtils.addYears(date, 1);
-                this.dateRevision.setValue(DateUtils.getDateString(newDate));
+                const newDate = this.dateService.addYears(date, 1);
+                this.dateRevision.setValue(this.dateService.getDateString(newDate));
             } else {
                 this.dateRevision.setValue('');
             }
