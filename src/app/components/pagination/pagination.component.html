@@ -1,0 +1,16 @@
+<div>
+    <div class="pagination">
+        <div (click)="handleClicPage(1)"><<</div>
+        <div (click)="handleClicPage(currentPage - 1)"><</div>
+        @for (page of visiblePages; track $index) {
+            <div
+                [class.active]="page == currentPage"
+                (click)="handleClicPage(page)"
+                >
+                {{ page }}
+            </div>
+        }
+        <div (click)="handleClicPage(currentPage + 1)">></div>
+        <div (click)="handleClicPage(totalPages)">>></div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="products-page">
 
-    <div class="products-page-header">
-        <div>
+    <div class="header">
+        <div class="search">
             <input
                 type="text"
                 name="search"
@@ -10,22 +10,22 @@
                 [disabled]="loading()"
                 />
         </div>
-        <div>
+        <div class="add">
             <a [routerLink]="['create']">
                 <button class="primary">Agregar</button>
             </a>
         </div>
     </div>
-
+    
     @if (loading()) {
         <app-table-skeleton [rows]="7" helperText="Cargando ..."/>
     }
-    @else {
-        <app-product-list
-            [products]="filteredProducts"
-            (onDelete)="productToDelete.set($event)"
-            />
-    }
+
+    <app-product-list
+        [class.hidden]="loading()"
+        [products]="filteredProducts"
+        (onDelete)="productToDelete.set($event)"
+        />
 
     @if (productToDelete()) {
         <app-confirmation-modal

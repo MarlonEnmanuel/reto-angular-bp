@@ -21,73 +21,62 @@
                             onerror="this.src = '/product-default.png'"
                             >
                     </td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.date_release }}</td>
-                    <td>{{ product.date_revision }}</td>
-                    <td>
-                        <!-- <div class="dropdown">
-                            <span>⁝</span>
-                            <ul>
-                                <li (click)="router.navigate(['/products', 'edit', product.id])">Editar</li>
-                                <li (click)="onDelete.emit(product)">Eliminar</li>
-                            </ul>
-                        </div> -->
+                    <td class="data">
+                        <span>Nombre:</span> {{ product.name }}
+                    </td>
+                    <td class="data">
+                        <span>Descripción:</span> {{ product.description }}
+                    </td>
+                    <td class="data">
+                        <span>Liberación:</span> {{ product.date_release }}
+                    </td>
+                    <td class="data">
+                        <span>Revisión:</span> {{ product.date_revision }}
+                    </td>
+                    <td class="menu">
                         <app-dropdown
                             [buttonText]="'⁝'"
                             [options]="getProductOptions(product)"
-                         />
+                            />
                     </td>
                 </tr>
                 }
             </tbody>
-            <tfoot>
-                @if (products().length === 0) {
-                    <tr>
-                        <td colspan="6">
-                            No se encontraron productos
-                        </td>
-                    </tr>
-                }
-                @else {
-                    <tr>
-                        <td colspan="4">
-                            <span>{{ products().length }} resultados</span>
-                            <span>&ensp;|&ensp;</span>
-                            <span>Página {{ currentPage() }} de {{ totalPages() }}</span>
-                            <span>&ensp;|&ensp;</span>
-                            <span>
-                                <button
-                                    [disabled]="currentPage() === 1"
-                                    (click)="previousPage()"
-                                    >
-                                    Anterior
-                                </button>
-                                &nbsp;
-                                <button
-                                    [disabled]="currentPage() === totalPages()"
-                                    (click)="nextPage()"
-                                    >
-                                    Siguiente
-                                </button>
-                            </span>
-                        </td>
-                        <td colspan="2" style="text-align: right;">
-                            <span>Mostrando </span>
-                            <select
-                                name="pagination"
-                                [value]="productsPerPage()"
-                                (change)="handleProductsPerPageChange($event)"
-                                >
-                                <option [value]="5">5</option>
-                                <option [value]="10">10</option>
-                                <option [value]="20">20</option>
-                            </select>
-                            <span> productos por página</span>
-                        </td>
-                    </tr>
-                }
-            </tfoot>
         </table>
+        <div class="summary">
+            @if (products().length === 0) {
+                <div>
+                    <span>
+                        No se encontraron productos
+                    </span>
+                </div>
+            }
+            @else {
+                <div>
+                    <span>{{ products().length }} resultados</span>
+                    <span> | </span>
+                    <span> 
+                        Máximo
+                        <select
+                            name="pagination"
+                            [value]="productsPerPage()"
+                            (change)="handleProductsPerPageChange($event)"
+                            >
+                            <option [value]="5">5</option>
+                            <option [value]="10">10</option>
+                            <option [value]="20">20</option>
+                        </select>
+                        por página
+                    </span>
+                </div>
+                <div>
+                    <app-pagination
+                        [totalItems]="products().length"
+                        [pageSize]="productsPerPage()"
+                        (changePage)="handlePageChange($event)"
+                        />
+                </div>
+            }
+        </div>
     </div>
 </div>

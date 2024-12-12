@@ -2,11 +2,12 @@ import { Component, computed, Input, output, Signal, signal } from '@angular/cor
 import { Product } from '../../services/products-api.models';
 import { Router } from '@angular/router';
 import { DropdownComponent } from "../dropdown/dropdown.component";
+import { PaginationComponent } from "../pagination/pagination.component";
 
 @Component({
     selector: 'app-product-list',
     standalone: true,
-    imports: [DropdownComponent],
+    imports: [DropdownComponent, PaginationComponent],
     templateUrl: './product-list.component.html',
     styleUrl: './product-list.component.scss'
 })
@@ -40,16 +41,8 @@ export class ProductListComponent {
         this.currentPage.set(1);
     }
 
-    public previousPage(){
-        this.currentPage.update((prev) => {
-            return prev <= 1 ? 1 : prev - 1;
-        });
-    }
-
-    public nextPage(){
-        this.currentPage.update((prev) => {
-            return prev >= this.totalPages() ? this.totalPages() : prev + 1;
-        });
+    public handlePageChange(page: number) {
+        this.currentPage.set(page);
     }
 
     public getProductOptions(product:Product){

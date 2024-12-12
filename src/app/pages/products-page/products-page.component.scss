@@ -1,12 +1,14 @@
 .products-page {
 
-    &-header {
+    .header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
         margin-bottom: 2rem;
 
         input {
-            padding: 0.8rem 1rem;
+            padding: 1rem;
             font-weight: bold;
         }
     }

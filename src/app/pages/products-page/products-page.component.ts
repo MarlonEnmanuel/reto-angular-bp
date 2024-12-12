@@ -30,6 +30,7 @@ export default class ProductsPageComponent {
     public filteredProducts = computed(() => {
         const products = this.products();
         const search = this.search().trim().toLowerCase();
+        if (!search) return products;
         return products.filter((product) =>
             product.name.toLowerCase().includes(search) ||
             product.description.toLowerCase().includes(search) ||
