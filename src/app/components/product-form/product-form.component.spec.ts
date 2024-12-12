@@ -25,8 +25,7 @@ describe('ProductFormComponent', () => {
             ]
         })
         .compileComponents();
-
-        location = TestBed.inject(Location); // TODO: remove
+        
         fixture = TestBed.createComponent(ProductFormComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();

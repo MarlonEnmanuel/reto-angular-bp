@@ -15,7 +15,7 @@ describe('FormService', () => {
         TestBed.configureTestingModule({
             providers: [
                 { provide: ProductsApiService, useValue: apiMocker.spy },
-
+                { provide: DateService, useValue: dateService },
             ]
         });
         service = TestBed.inject(FormService);
@@ -54,14 +54,15 @@ describe('FormService', () => {
     });
 
     it('todayOrFutureValidator should return null', () => {
-        const value = dateService.getDateString(dateService.getToday());
-        const control = new FormControl(value);
+        spyOn(dateService, 'getToday').and.returnValue(new Date('2021-01-01'));
+        const control = new FormControl('2021-01-01');
         const validator = service.todayOrFutureValidator();
         const result = validator(control);
         expect(result).toBeNull();
     });
 
     it('todayOrFutureValidator should return error', () => {
+        spyOn(dateService, 'getToday').and.returnValue(new Date('2021-01-01'));
         const control = new FormControl('2020-01-01');
         const validator = service.todayOrFutureValidator();
         const result = validator(control);

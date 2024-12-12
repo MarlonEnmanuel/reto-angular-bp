@@ -9,7 +9,7 @@ import { Component, Input, output } from '@angular/core';
 })
 export class PaginationComponent {
 
-    @Input({ required: true }) public totalItems: number = 0;
+    @Input({ required: true }) totalItems: number = 0;
     @Input({ required: true }) pageSize: number = 5;
     public changePage = output<number>();
 
